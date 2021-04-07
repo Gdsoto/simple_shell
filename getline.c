@@ -9,20 +9,22 @@
 
 int main(int argc, char **argv)
 {
-    char *line; 
+    char *line;
+    char **tokens;
     (void)argc;
-	(void)argv;
-    
+    (void)argv;
+
     while (1)
     {
         _putchar('$');
         _putchar(' ');
         line = getLines();
-        printf("%s", line);
-
+        tokens = getTokens(line);
+        compareTokens(tokens);
     }
     free(line);
-    return(0);
+    free(tokens);
+    return (0);
 }
 
 /**
@@ -33,8 +35,39 @@ int main(int argc, char **argv)
 char *getLines()
 {
     char *line = NULL;
-	size_t lineSize = 0;
+    size_t lineSize = 0;
 
     getline(&line, &lineSize, stdin);
     return line;
+}
+
+/**
+ * getTokens - transform strin in tokens
+ * @line:String of arguments
+ * Return: matrix of tokens
+ */
+
+char **getTokens(char *line)
+{
+    int bufsize = 64, i = 0;
+    const char *delim = " ";
+    char **tokens = malloc(bufsize * sizeof(char *));
+    char *token;
+
+    if (!tokens)
+    {
+        exit(EXIT_FAILURE);
+    }
+    
+    token = strtok(line, delim);
+
+    while (token != NULL)
+    {
+        tokens[i] = token;
+        i++;
+        token = strtok(NULL, delim);
+    }
+
+    tokens[i] = NULL;
+    return tokens;
 }

@@ -9,6 +9,7 @@
 
 /*Functions*/
 int _putchar(char c);
+char **getTokens(char *line);
 char *getLines();
 int main(int argc, char **argv);
 
