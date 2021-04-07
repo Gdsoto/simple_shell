@@ -44,13 +44,13 @@ char *getLines()
 /**
  * getTokens - transform strin in tokens
  * @line:String of arguments
+ * @delim: delimiter
  * Return: matrix of tokens
  */
 
 char **getTokens(char *line)
 {
-    int bufsize = 64, i = 0;
-    const char *delim = " ";
+    int bufsize = BUFFSIZE_TOKENS, i = 0;
     char **tokens = malloc(bufsize * sizeof(char *));
     char *token;
 
@@ -59,13 +59,13 @@ char **getTokens(char *line)
         exit(EXIT_FAILURE);
     }
     
-    token = strtok(line, delim);
+    token = strtok(line, DELIM_TOKENS);
 
     while (token != NULL)
     {
         tokens[i] = token;
         i++;
-        token = strtok(NULL, delim);
+        token = strtok(NULL, DELIM_TOKENS);
     }
 
     tokens[i] = NULL;
