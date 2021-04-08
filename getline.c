@@ -69,5 +69,5 @@ char **getTokens(char *line)
     }
 
     tokens[i] = NULL;
-    return tokens;
+    return (tokens);
 }
