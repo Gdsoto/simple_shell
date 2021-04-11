@@ -27,9 +27,12 @@ To run _printf you must write the following:
 .SH Basic options
 .B ls
 .I - command to list computer files
-
-.B exitgit
+.P
+.B exit
 .I - command to list computer files
+.P
+.B cd
+.I - command to change directories
 
 .SH AUTHORS
 Diana Ayala, Sergio Monroy, Gerson Soto

@@ -6,15 +6,30 @@
  * Return: function
  */
 
-int compareTokens(char **tokens)
+int compareTokens(char **tokens, char **env)
 {
-    printf("%s", tokens[0]);
+    optype_t ops[] = {
+        {"exit", f_exit},
+        {"cd", f_cd},
+        {"env", f_env},
+        {'\0', NULL}};
+
+    int i;
+
     if (tokens[0] == NULL)
     {
         return (1);
     }
-    /* Aqui deben compararse los tokens con los comandos ls, exit etc */
-    return setCommand(tokens);
+
+    for (i = 0; i < 3; i++)
+    {
+        if (_strcmp(tokens[0], ops[i].type) == 0)
+        {
+            return ops[i].func(tokens, env);
+        }
+    }
+
+    return setCommand(tokens, env);
 }
 
 /**
@@ -23,9 +38,12 @@ int compareTokens(char **tokens)
  * Return: int
  */
 
-int setCommand(char **tokens)
+int setCommand(char **tokens, char **env)
 {
-    pid_t my_pid;    
+    pid_t my_pid;
+
+    char *path = NULL;
+    char filename[100] = "/bin/";
 
     my_pid = fork();
     if (tokens && tokens[0])
@@ -36,11 +54,20 @@ int setCommand(char **tokens)
         }
         else if (my_pid == 0)
         {
-            if (execve(tokens[0], tokens, NULL) == -1)
+            if ((tokens[0][0] == '/' || tokens[0][0] == '.') && tokens[0])
             {
-                perror("Error");
+                if (execve(tokens[0], tokens, NULL) == -1)
+                    perror("Error");
+                exit(EXIT_FAILURE);
             }
-            exit(EXIT_FAILURE);
+            else
+            {
+                path = strcat(filename, tokens[0]);
+
+                if (execve(path, tokens, env) == -1)
+                    perror("Error");
+                exit(EXIT_FAILURE);
+            }
         }
         else
         {

@@ -7,20 +7,23 @@
  * Return: return the function
  */
 
-int main(int argc, char **argv)
+int main(int argv, char **argc, char **env)
 {
+    char *cwd;
     char *line;
     char **tokens;
+    int status = 1;
+    char s[100];
     (void)argc;
     (void)argv;
 
-    while (1)
+    while (status == 1)
     {
-        _putchar('$');
-        _putchar(' ');
+        cwd = getcwd(s, 100);
+        p_cwd(cwd);
         line = getLines();
         tokens = getTokens(line);
-        compareTokens(tokens);
+        status = compareTokens(tokens, env);
     }
     free(line);
     free(tokens);
@@ -58,7 +61,7 @@ char **getTokens(char *line)
     {
         exit(EXIT_FAILURE);
     }
-    
+
     token = strtok(line, DELIM_TOKENS);
 
     while (token != NULL)
