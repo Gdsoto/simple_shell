@@ -1,6 +1,8 @@
 #  0x16. C - Simple Shell
 
-![Holberton logo](https://www.holbertonschool.com/holberton-logo.png "Holberton Logo")
+<p align="center">
+    <img src="https://www.holbertonschool.com/holberton-logo.png"/>
+</p>
 
 This repository contains the files for Holberton's simple_shell project. This project contains the source code necessary to run a simple UNIX command line interpreter.
 
