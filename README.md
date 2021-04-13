@@ -4,6 +4,10 @@
 
 This project contains the source code necessary to run a simple Unix command line interpreter.
 
+# Description
+
+simple_shell is a command line interpreter, or shell, in the traditions of the first Unix shell written by Ken Thompson in 1971.Remember that it is the command interpretor in a operating system such as Unix or linux,This shell includes basic functionality found in the traditional Unix shell.
+
 ## First steps
 
 You can get a copy of the project, cloning from the repository with:
