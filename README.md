@@ -31,7 +31,10 @@ These are the files with the custom funtions and system calls, each one contains
 |  [`man_1_simple_shell`](./man_1_simple_shell)  | Manual Page	|
 |  [`README.md`](./README.md)  | Project description |
 |  [`AUTHORS`](./AUTHORS)  | List of contributors |
-|  [pending others files]  | xxxxxxx |
+|  [`getline.c`](./getline.c) | main() |
+|  [`stTokens.c`](./setTokens.c) | compareTokens() |
+|  [`builtin.c`](./builtin.c) | int f_exit() |
+|  [`util.c`](./util.c) | _putchar() |
 
 ## How to use
 After cloning the repository, we will use gcc to compile the project.
