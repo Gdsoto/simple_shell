@@ -11,8 +11,8 @@ int _putchar(char c)
 }
 
 /**
- * _strcmp - Compares strings str & str2
- * @str: First string to be compared
+ * _strcmp - Compares strings str1 & str2
+ * @str1: First string to be compared
  * @str2: Second string being compared with the first
  * Return: 0
  */
@@ -51,3 +51,4 @@ void p_cwd(char *cwd)
 	_putchar('$');
 	_putchar(' ');
 }
+

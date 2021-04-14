@@ -19,8 +19,8 @@
  */
 typedef struct optype
 {
-    char *type;
-    int (*func)();
+	char *type;
+	int (*func)();
 } optype_t;
 
 /*Functions*/
@@ -30,6 +30,7 @@ void p_cwd(char *cwd);
 int f_exit(char **tokens, char **env);
 int f_cd(char **tokens, char **env);
 int f_env(char **tokens, char **env);
+int executeCommand(char **tokens, char **env);
 int setCommand(char **tokens, char **env);
 int compareTokens(char **tokens, char **env);
 char **getTokens(char *line);
