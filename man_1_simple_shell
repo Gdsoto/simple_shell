@@ -1,18 +1,28 @@
-.\" Manpage for simple_shell.
 .TH simple_shell 1 "5 April 2021" "0.1" "simple_shell man page"
+
 .SH NAME
-.B hsh  \" name of program
+.B hsh  \- Simple Shell
 .I - program that simulates the basic operation of a shell in linux
+
 .SH SYNOPSIS
-.IP
 .B ./hsh
 .IP
-.I [options] [file]
+.I $ commad [option(s)] [file]
+
 .SH DESCRIPTION
 .B simple_shell
 It is a basic command interpreter, taking the arguments from the standard 
 input or a file and executing the commands to display them on the standard 
 output. 
+This shell works as a command interpreter in two modes:
+.TP
+.B Interactive Mode
+.TP
+In this mode, the shell takes the commands from the standard input, executes them and gets ready to read another command-line.
+.TP
+.B Non-interactive Mode
+.TP
+This mode reads the commands from a file sent thru a pipe, the commands will be executed and the shell won't ask for more.
 
 .SH Compilation
 .P
@@ -20,10 +30,12 @@ To compile it is necessary to use GCC, and this flag:
 .P
 .B gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 .P
-To run _printf you must write the following:
-.P
-.B ./hsh
-.P
+.SH INVOCATION
+.br
+.\&
+.RS
+\&$ ./hsh
+
 .SH Basic options
 .B ls
 .I - command to list computer files
