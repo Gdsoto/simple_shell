@@ -11,10 +11,9 @@ int compareTokens(char **tokens, char **env)
 	optype_t ops[] = {
 		{"exit", f_exit},
 		{"cd", f_cd},
-		{"env", f_env},
-		{'\0', NULL}};
+		{"env", print_env,},
+		{"\0", NULL}};
 	int i;
-
 	if (tokens[0] == NULL)
 	{
 		return (1);
@@ -38,9 +37,7 @@ int compareTokens(char **tokens, char **env)
 int setCommand(char **tokens, char **env)
 {
 	pid_t my_pid;
-
 	int result = 0;
-
 	my_pid = fork();
 
 	if (tokens && tokens[0])
@@ -72,7 +69,6 @@ int executeCommand(char **tokens, char **env)
 {
 	char *path = NULL;
 	char filename[100] = "/bin/";
-
 	if ((tokens[0][0] == '/' || tokens[0][0] == '.') && tokens[0])
 	{
 		if (execve(tokens[0], tokens, NULL) == -1)
@@ -88,4 +84,3 @@ int executeCommand(char **tokens, char **env)
 	}
 	return (1);
 }
-

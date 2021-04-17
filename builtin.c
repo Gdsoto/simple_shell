@@ -35,24 +35,44 @@ int f_cd(char **tokens, char **env)
 }
 
 /**
- * f_env - Print environment variables
- * @tokens: pointer to string of tokens
- * @env: environment variables
- * Return: - 1
+ * print_env - prints the environment variable
+ * @tokens: the environment variable to print
+ * @env: exit status
+ * Return: Always (0) for sucess
  */
-int f_env(char **tokens, char **env)
+int print_env(char **tokens, int *env)
 {
-	unsigned int i, j;
-	(void)tokens;
+	unsigned int i = 0;
 
-	for (i = 0; env[i]; i++)
+	while (tokens[i] != NULL)
 	{
-		for (j = 0; env[i][j]; j++)
-		{
-		}
-		write(STDOUT_FILENO, env[i], j);
+		print_string(tokens[i]);
 		_putchar('\n');
+		i++;
 	}
-	return (1);
+	*env = 0;
+	return (EXIT_SUCCESS);
 }
 
+
+/**
+ * built_ins - function that implements the exit and print_env builtins
+ * @line: the buffer
+ * @args: the parsed arguments
+ * @env: the environment
+ * @exit_stat: the exit status
+ * Return: void
+ */
+void built_ins(char *line, char **args, char **env, int *exit_stat)
+{
+
+	if (_strcmp(args[0], "exit") == 0)
+	{
+		free(args);
+		free(line);
+		exit(*exit_stat);
+	}
+
+	if (_strcmp(args[0], "env") == 0)
+		print_env(env, exit_stat);
+}

@@ -1,35 +1,4 @@
 #include "holberton.h"
-
-/**
- * main - main
- * @argc:pointer with number of arguments
- * @argv:pointer of array of arguments given
- * @env: environment variable
- * Return: return the function
- */
-int main(int argv, char **argc, char **env)
-{
-	char *cwd;
-	char *line;
-	char **tokens;
-	int status = 1;
-	char s[100];
-	(void)argc;
-	(void)argv;
-
-	while (status == 1)
-	{
-		cwd = getcwd(s, 100);
-		p_cwd(cwd);
-		line = getLines();
-		tokens = getTokens(line);
-		status = compareTokens(tokens, env);
-	}
-	free(line);
-	free(tokens);
-	return (0);
-}
-
 /**
  * getLines - obtain the arguments of command line
  * Return: *char of arguments
