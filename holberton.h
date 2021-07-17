@@ -22,6 +22,7 @@ typedef struct optype
 {
 	char *type;
 	int (*func)();
+	ssize_t current_characters_read;
 } optype_t;
 
 /*Functions*/
@@ -34,7 +35,7 @@ int executeCommand(char **tokens, char **env);
 int setCommand(char **tokens, char **env);
 int compareTokens(char **tokens, char **env);
 char **getTokens(char *line);
-ssize_t _getline(data_t *data);
+ssize_t _getline(optype_t *data);
 int main(int argc, char **argv, char **env);
 char *_strdup(char *str);
 int print_env(char **tokens, int *env);

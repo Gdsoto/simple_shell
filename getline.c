@@ -3,7 +3,7 @@
  * getLines - obtain the arguments of command line
  * Return: *char of arguments
  */
-char *getLines()
+char _getline(optype_t *data)
 {
 	static int characters;
 	static char readed[BUFFER_SIZE];
