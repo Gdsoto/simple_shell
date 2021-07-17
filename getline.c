@@ -5,41 +5,44 @@
  */
 char *getLines()
 {
-	char *buffer = NULL, *cp_buff = NULL;
-	int position = 0, c = 0;
+	static int characters;
+	static char readed[BUFFER_SIZE];
+	static char position;
+	char *current_line;
+	int i;
+	ssize_t counter = 0;
 
-	buffer = _calloc(BUFSIZ, sizeof(char));
-	if (!buffer)
+	current_line = data->current_line;
+	if (character == 0)
 	{
-		perror("./hsh");
-		exit(EXIT_FAILURE);
+		character = read(STDIN_FILENO, readed, sizeof(readed));
+		position = readed;
 	}
-	while ((c = _getchar()))
-	{
 
-		if (c == EOF)
+	if (character > 0)
+	{
+		for (i = 0;
+				*position != '\n'
+				&& *position != ';'
+				&& (*position != '&' && *(position + 1) != '&')
+				&& (*position != '|' && *(position + 1) != '|');
+			i++)
+			*current_line++ = *position++, character--, counter++;
+		if (*position == ';')
 		{
-			buffer[position] = '\0';
-			cp_buff = _strdup(buffer);
-			free(buffer);
-			return (cp_buff);
-		}
-		if (c == '\n')
-		{
-			buffer[position] = '\n';
-			cp_buff = _strdup(buffer);
-			free(buffer);
-			return (cp_buff);
+			data->logic_operator = true;
 		}
 		else
 		{
-			buffer[position] = c;
+			data->logic_operator = false;
 		}
-		position++;
+		*current_line = '\0', character--, position++;
+		return (counter);
 	}
-	return (NULL);
+
+	return (EOF);
 }
-}
+
 
 /**
  * getTokens - transform strin in tokens
