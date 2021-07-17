@@ -8,8 +8,10 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <signal.h>
 
 /* Macros */
+#define BUFFER_SIZE (BUFSIZ)
 #define BUFFSIZE_TOKENS 64
 #define DELIM_TOKENS " \n"
 
