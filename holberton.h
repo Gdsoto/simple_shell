@@ -54,6 +54,7 @@ void execute(int status, char **args, int *exit_stat, int *tal);
 char **parser(char *l);
 void print_int(int *tal);
 void rm_newl(char *l);
+void contrl_C(int n);
 
 
 #endif
