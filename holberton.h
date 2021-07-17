@@ -34,7 +34,7 @@ int executeCommand(char **tokens, char **env);
 int setCommand(char **tokens, char **env);
 int compareTokens(char **tokens, char **env);
 char **getTokens(char *line);
-char _getline(data_t *data);
+ssize_t _getline(data_t *data);
 int main(int argc, char **argv, char **env);
 char *_strdup(char *str);
 int print_env(char **tokens, int *env);
