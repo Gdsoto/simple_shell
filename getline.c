@@ -1,6 +1,7 @@
 #include "holberton.h"
 /**
- * getLines - obtain the arguments of command line
+ * _getline - obtain the arguments of command line
+ * @data: the data of function
  * Return: *char of arguments
  */
 char _getline(optype_t *data)
